@@ -21,7 +21,6 @@ class ProductoController extends Controller
             'descripcion' => 'nullable|string',
             'id_unidad' => 'required|exists:Unidades_Medida,id_unidad',
             'precio_referencia' => 'nullable|numeric|min:0',
-            'cantidad' => 'nullable|numeric|min:0',
         ]);
 
         $producto = Productos::create($data);
@@ -43,7 +42,6 @@ class ProductoController extends Controller
             'descripcion' => 'nullable|string',
             'id_unidad' => 'sometimes|required|exists:Unidades_Medida,id_unidad',
             'precio_referencia' => 'nullable|numeric|min:0',
-            'cantidad' => 'nullable|numeric|min:0',
         ]);
 
         $producto->update($data);

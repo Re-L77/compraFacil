@@ -14,7 +14,7 @@ class Productos extends Model
     public $incrementing = true;
     public $keyType = 'int';
     public $timestamps = false;
-    protected $fillable = ['nombre', 'descripcion', 'unidad_medida', 'id_unidad', 'precio_referencia', 'cantidad'];
+    protected $fillable = ['nombre', 'descripcion', 'unidad_medida', 'id_unidad', 'precio_referencia'];
 
     public function unidadMedida()
     {
