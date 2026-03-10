@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iniciar sesión | compraFacil</title>
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="js/login.js" defer></script>
+</head>
+
+<body>
+    <main class="page">
+        <section class="card">
+            <header class="card__header">
+                <div class="brand">
+                    <div class="brand__mark">CF</div>
+                    <div class="brand__text">
+                        <div class="brand__name">compraFacil</div>
+                        <div class="brand__tag">Acceso al sistema</div>
+                    </div>
+                </div>
+            </header>
+            <form id="loginForm" class="form" novalidate>
+                <div class="field">
+                    <label for="email" class="field__label">Correo</label>
+                    <input id="email" class="field__input" type="text" autocomplete="email" placeholder="Ej. admin"
+                        required />
+                </div>
+                <div class="field">
+                    <label for="password" class="field__label">Contraseña</label>
+                    <input id="password" class="field__input" type="password" autocomplete="current-password"
+                        placeholder="************" required />
+                </div>
+                <button type="submit" class="btn btn--primary">Entrar</button>
+                <p id="msg" class="msg" aria-live="polite"></p>
+            </form>
+            <footer class="card__footer">
+                <small>©️ <span id="year"></span>CompraFacil</small>
+            </footer>
+        </section>
+    </main>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

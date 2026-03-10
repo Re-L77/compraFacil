@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | compraFacil</title>
+    <link rel="stylesheet" href="/css/usuarios.css">
+    <script src="js/producto.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div>
+                <h2>Módulo Productos</h2>
+                <p class="subtitle">
+                    Gestiona el catálogo de productos
+                </p>
+            </div>
+            <div class="topbar-actions">
+                <a class="btn" href="./dashboard.html">Volver</a>
+                <a class="btn btn-primary" href="./productos-form.html">Nuevo Producto</a>
+                <button id="logoutBtn" class="btn btn-danger" type="button">Cerrar Sesión</button>
+            </div>
+        </div>
+        <section class="card">
+            <div class="card-body">
+                <div class="toolbar">
+                    <input class="input" id="search" type="text"
+                        placeholder="Buscar por nombre, descripción o unidad...">
+                    <button id="refreshBtn" class="btn">Actualizar</button>
+                </div>
+                <p id="status" class="status">
+                    Cargando...
+                </p>
+                <div class="table-wrap">
+                    <table class="table" id="productsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Unidad</th>
+                                <th>Precio Referencia</th>
+                                <th>Cantidad</th>
+                                <th style="width:260px;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

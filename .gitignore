@@ -1,0 +1,57 @@
+# Laravel Framework
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/bootstrap/cache
+/bootstrap/cache/config.php
+.env
+.env.backup
+.env.production.local
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.DS_Store
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+.gitkeep
+
+# Composer
+/vendor
+composer.phar
+
+# Testing
+.phpunit.result.cache
+coverage/
+.coverage
+
+# Local development
+.env.local
+.env.*.local
+
+# Build artifacts
+/public/css/*.css
+/public/js/*.js
+/public/build
