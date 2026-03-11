@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Requisición | compraFacil</title>
+    <link rel="stylesheet" href="/css/usuarios.css">
+    <style>
+        .detalles-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .detalles-table thead tr {
+            background-color: #f0f0f0;
+        }
+
+        .detalles-table th,
+        .detalles-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .detalles-table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .detalle-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .detalle-actions button {
+            padding: 5px 10px;
+            font-size: 0.85rem;
+        }
+
+        .agregar-detalle-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 150px;
+            gap: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div>
+                <h2 id="title">Nueva Requisición</h2>
+                <p class="subtitle" id="subtitle">Captura los datos de la requisición</p>
+            </div>
+
+            <div class="topbar-actions">
+                <a class="btn" href="/requisiciones.html">Volver</a>
+            </div>
+        </div>
+
+        <section class="card">
+            <div class="card-body">
+                <form id="requisicionForm" class="form">
+                    <div class="grid2">
+                        <div>
+                            <label>Folio <span style="color: red;">*</span></label>
+                            <input id="folio" class="input" type="text" maxlength="20" placeholder="Ej. REQ-2026-0001"
+                                required>
+                            <small id="folioCounter" style="color: #666; display: block; margin-top: 4px;">
+                                0/20 caracteres
+                            </small>
+                        </div>
+
+                        <div>
+                            <label>Usuario Solicitante <span style="color: red;">*</span></label>
+                            <select id="usuarioSolicitante" class="input" required>
+                                <option value="">Cargando usuarios...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid2">
+                        <div>
+                            <label>Estatus <span style="color: red;">*</span></label>
+                            <select id="estatus" class="input" required>
+                                <option value="">Cargando estatus...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label>Justificación <span style="color: red;">*</span> <small style="color: #999;">(máximo 300
+                            caracteres)</small></label>
+                    <textarea id="justificacion" class="input" rows="4" maxlength="300"
+                        placeholder="Motivo o descripción de la requisición..." required></textarea>
+                    <small id="justificacionCounter" style="color: #666; display: block; margin-top: 4px;">
+                        0/300 caracteres
+                    </small>
+
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Detalles de la Requisición</h3>
+
+                    <div class="table-wrap">
+                        <table class="detalles-table" id="detallesTable">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th style="text-align: center; width: 100px;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detallesTbody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="agregar-detalle-row">
+                        <select id="categoriaFilter" class="input" placeholder="Selecciona categoría...">
+                            <option value="">-- Selecciona categoría --</option>
+                            <option value="1">Producto</option>
+                            <option value="2">Servicio</option>
+                        </select>
+                        <select id="productoSelect" class="input" placeholder="Selecciona un producto...">
+                            <option value="">-- Selecciona producto --</option>
+                        </select>
+                        <input id="cantidadInput" class="input" type="number" step="0.01" min="0.01"
+                            placeholder="Cantidad">
+                        <button type="button" id="agregarDetalleBtn" class="btn btn-primary">Agregar Item</button>
+                    </div>
+
+                    <p id="detallesMsg" class="status" style="margin-top: 10px;"></p>
+
+                    <button class="btn btn-primary" type="submit" id="saveBtn" style="margin-top: 30px;">Guardar
+                        Requisición</button>
+                    <p id="msg" class="status"></p>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="/js/requisiciones-form.js"></script>
+</body>
+
+</html>

@@ -9,7 +9,7 @@ class UnidadesMedida extends Model
     protected $table = 'Unidades_Medida';
     protected $primaryKey = 'id_unidad';
     public $timestamps = true;
-    protected $fillable = ['nombre', 'descripcion'];
+    protected $fillable = ['nombre', 'descripcion', 'es_contable'];
 
     public function productos()
     {

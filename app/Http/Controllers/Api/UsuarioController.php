@@ -26,10 +26,10 @@ class UsuarioController extends Controller
     {
         //
         $data = $request->validate([
-            'nombre' => 'required|string|max:100',
-            'apellido_paterno' => 'nullable|string|max:100',
-            'apellido_materno' => 'nullable|string|max:100',
-            'email' => 'required|string|max:200|unique:Usuarios,email',
+            'nombre' => 'required|string|max:80',
+            'apellido_paterno' => 'nullable|string|max:80',
+            'apellido_materno' => 'nullable|string|max:80',
+            'email' => 'required|string|max:100|unique:Usuarios,email',
             'contrasena' => 'required|string|min:6',
             'id_rol' => 'required|exists:Roles,id_rol',
             'id_depto' => 'required|exists:Departamentos,id_depto'
@@ -55,10 +55,10 @@ class UsuarioController extends Controller
     public function update(Request $request, Usuarios $usuario)
     {
         $data = $request->validate([
-            'nombre' => 'sometimes|required|string|max:100',
-            'apellido_paterno' => 'nullable|string|max:100',
-            'apellido_materno' => 'nullable|string|max:100',
-            'email' => 'sometimes|required|string|max:200|unique:Usuarios,email,' . $usuario->id_usuario . ',id_usuario',
+            'nombre' => 'sometimes|required|string|max:80',
+            'apellido_paterno' => 'nullable|string|max:80',
+            'apellido_materno' => 'nullable|string|max:80',
+            'email' => 'sometimes|required|string|max:100|unique:Usuarios,email,' . $usuario->id_usuario . ',id_usuario',
             'contrasena' => 'nullable|string|min:6',
             'id_rol' => 'sometimes|required|exists:Roles,id_rol',
             'id_depto' => 'sometimes|required|exists:Departamentos,id_depto'

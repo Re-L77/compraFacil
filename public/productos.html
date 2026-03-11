@@ -28,7 +28,10 @@
             <div class="card-body">
                 <div class="toolbar">
                     <input class="input" id="search" type="text"
-                        placeholder="Buscar por nombre, descripción o unidad...">
+                        placeholder="Buscar por nombre, descripción, unidad o categoría...">
+                    <select class="input" id="categoriaFilter">
+                        <option value="">-- Todas las categorías --</option>
+                    </select>
                     <button id="refreshBtn" class="btn">Actualizar</button>
                 </div>
                 <p id="status" class="status">
@@ -42,6 +45,7 @@
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Unidad</th>
+                                <th>Categoría</th>
                                 <th>Precio Referencia</th>
                                 <th style="width:260px;">Acciones</th>
                             </tr>
