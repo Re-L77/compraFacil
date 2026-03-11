@@ -30,6 +30,18 @@ class RequisicionController extends Controller
             'detalles.*.cantidad' => 'required|numeric|min:0.01|max:9999999.99',
         ]);
 
+        // Validar que las cantidades respeten la unidad de medida
+        foreach ($data['detalles'] as $idx => $detalle) {
+            $producto = Productos::with('unidadMedida')->find($detalle['id_producto']);
+            if ($producto && $producto->unidadMedida && $producto->unidadMedida->es_contable) {
+                if (floor($detalle['cantidad']) != $detalle['cantidad']) {
+                    return response()->json([
+                        'message' => "El producto \"{$producto->nombre}\" solo acepta cantidades enteras."
+                    ], 422);
+                }
+            }
+        }
+
         try {
             $requisicion = Requisicion::create([
                 'folio' => $data['folio'],
@@ -73,6 +85,20 @@ class RequisicionController extends Controller
             'detalles.*.id_producto' => 'required|exists:Productos,id_producto',
             'detalles.*.cantidad' => 'required|numeric|min:0.01|max:9999999.99',
         ]);
+
+        // Validar que las cantidades respeten la unidad de medida
+        if (isset($data['detalles'])) {
+            foreach ($data['detalles'] as $detalle) {
+                $producto = Productos::with('unidadMedida')->find($detalle['id_producto']);
+                if ($producto && $producto->unidadMedida && $producto->unidadMedida->es_contable) {
+                    if (floor($detalle['cantidad']) != $detalle['cantidad']) {
+                        return response()->json([
+                            'message' => "El producto \"{$producto->nombre}\" solo acepta cantidades enteras."
+                        ], 422);
+                    }
+                }
+            }
+        }
 
         try {
             $requisicion->update($data);

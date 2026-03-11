@@ -7,10 +7,15 @@
     <title>Requisición | compraFacil</title>
     <link rel="stylesheet" href="/css/usuarios.css">
     <style>
+        .container {
+            max-width: 1200px;
+        }
+
         .detalles-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            table-layout: fixed;
         }
 
         .detalles-table thead tr {
@@ -20,22 +25,54 @@
         .detalles-table th,
         .detalles-table td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 12px;
             text-align: left;
+        }
+
+        .detalles-table tfoot td {
+            padding: 8px 4px;
         }
 
         .detalles-table tbody tr:hover {
             background-color: #f9f9f9;
         }
 
+        .detalles-table th:nth-child(1),
+        .detalles-table td:nth-child(1) {
+            width: 18%;
+        }
+
+        .detalles-table th:nth-child(2),
+        .detalles-table td:nth-child(2) {
+            width: 42%;
+        }
+
+        .detalles-table th:nth-child(3),
+        .detalles-table td:nth-child(3) {
+            width: 20%;
+        }
+
+        .detalles-table th:nth-child(4),
+        .detalles-table td:nth-child(4) {
+            width: 20%;
+            text-align: center;
+        }
+
         .detalle-actions {
             display: flex;
             gap: 5px;
+            justify-content: center;
         }
 
         .detalle-actions button {
             padding: 5px 10px;
             font-size: 0.85rem;
+        }
+
+        .detalles-table tfoot tr td input,
+        .detalles-table tfoot tr td select {
+            width: 100%;
+            min-width: auto;
         }
 
         .agregar-detalle-row {
@@ -100,33 +137,42 @@
 
                     <h3 style="margin-top: 30px; margin-bottom: 15px;">Detalles de la Requisición</h3>
 
-                    <div class="table-wrap">
-                        <table class="detalles-table" id="detallesTable">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
-                                    <th style="text-align: center; width: 100px;">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="detallesTbody">
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="agregar-detalle-row">
-                        <select id="categoriaFilter" class="input" placeholder="Selecciona categoría...">
-                            <option value="">-- Selecciona categoría --</option>
-                            <option value="1">Producto</option>
-                            <option value="2">Servicio</option>
-                        </select>
-                        <select id="productoSelect" class="input" placeholder="Selecciona un producto...">
-                            <option value="">-- Selecciona producto --</option>
-                        </select>
-                        <input id="cantidadInput" class="input" type="number" step="0.01" min="0.01"
-                            placeholder="Cantidad">
-                        <button type="button" id="agregarDetalleBtn" class="btn btn-primary">Agregar Item</button>
-                    </div>
+                    <table class="detalles-table" id="detallesTable">
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th style="text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detallesTbody">
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <select id="categoriaFilter" class="input">
+                                        <option value="">-- Categoría --</option>
+                                        <option value="1">Producto</option>
+                                        <option value="2">Servicio</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select id="productoSelect" class="input">
+                                        <option value="">-- Producto --</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input id="cantidadInput" class="input" type="number" step="0.01" min="0.01"
+                                        placeholder="Cantidad">
+                                </td>
+                                <td style="text-align: center;">
+                                    <button type="button" id="agregarDetalleBtn"
+                                        class="btn btn-primary">Agregar</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
 
                     <p id="detallesMsg" class="status" style="margin-top: 10px;"></p>
 

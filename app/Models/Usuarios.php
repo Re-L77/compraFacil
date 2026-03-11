@@ -18,7 +18,7 @@ class Usuarios extends Model
     protected $fillable = ['nombre', 'apellido_paterno', 'apellido_materno', 'email', 'password_hash', 'id_rol', 'id_depto'];
     protected $hidden = ['password_hash'];
 
-    protected $appends = ['roles', 'empleados'];
+    protected $appends = ['roles', 'empleados', 'nombre_completo'];
 
     public function rol()
     {
@@ -63,5 +63,19 @@ class Usuarios extends Model
         return [$empleado];
     }
 
+    public function getNombreCompletoAttribute()
+    {
+        $nombre = $this->attributes['nombre'] ?? '';
+        $apellidoPaterno = $this->attributes['apellido_paterno'] ?? '';
+        $apellidoMaterno = $this->attributes['apellido_materno'] ?? '';
+        
+        $partes = array_filter([
+            $nombre,
+            $apellidoPaterno,
+            $apellidoMaterno
+        ]);
+        
+        return implode(' ', $partes);
+    }
 
 }
