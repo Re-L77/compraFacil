@@ -8,6 +8,7 @@ use App\Models\RequisicionDetalle;
 use App\Models\Productos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class RequisicionController extends Controller
 {
@@ -132,6 +133,27 @@ class RequisicionController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error al actualizar: ' . $e->getMessage()], 400);
         }
+    }
+
+    public function resumen()
+    {
+        $rows = DB::table('Requisiciones')
+            ->select('id_estatus', DB::raw('COUNT(*) as total'))
+            ->groupBy('id_estatus')
+            ->get()
+            ->keyBy('id_estatus');
+
+        $enProceso = (int) ($rows[1]->total ?? 00);
+        $aprobadas = (int) ($rows[2]->total ?? 00);
+        $rechazadas = (int) ($rows[3]->total ?? 00);
+        $total = $enProceso + $aprobadas + $rechazadas;
+
+        return response()->json([
+            'en_proceso' => $enProceso,
+            'aprobadas' => $aprobadas,
+            'rechazadas' => $rechazadas,
+            'total' => $total,
+        ]);
     }
 
     public function destroy($id)

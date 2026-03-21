@@ -26,5 +26,9 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('usuarios', UsuarioController::class);
     Route::apiResource('productos', ProductoController::class);
     Route::apiResource('requisiciones', RequisicionController::class);
+    Route::get('/resumen', [RequisicionController::class, 'resumen']);
+    Route::get('/requisiciones/resumen', [RequisicionController::class, 'resumen']);
+    Route::get('/requisiciones/aprobadas-por-departamento', [RequisicionController::class, 'aprobadasPorDepartamento']);
+    Route::get('/requisiciones/por-mes-2026', [RequisicionController::class, 'requisicionesPorMes2026']);
 });
 ?>
